@@ -11,6 +11,8 @@ using System.Numerics;
 
 //This code calculates the gallons needed & fuel costs
 
+Console.WriteLine("=== Part 1: Road Trip ===");
+
 Console.Write("Input Road Trip length in miles ");
 int roadTripLength = Convert.ToInt32(Console.ReadLine());
 
@@ -20,14 +22,18 @@ double milesPerGallon = Convert.ToDouble(Console.ReadLine());
 Console.Write("Input Price per Gallon ");
 double pricePerGallon = Convert.ToDouble(Console.ReadLine());
 
+
+
 double gallonsNeeded = roadTripLength / milesPerGallon; 
 
 double fuelCost = gallonsNeeded * pricePerGallon;
 
-Console.WriteLine("Gallons needed:" + gallonsNeeded.ToString("F2"));
-Console.WriteLine("Fuel cost:" + fuelCost.ToString("C")); 
+Console.WriteLine("Gallons needed: " + gallonsNeeded.ToString("F2"));
+Console.WriteLine("Fuel cost: " + fuelCost.ToString("C")); 
 
 // This code calculates needs for the pizza party
+
+Console.WriteLine("=== Part 2: Pizza Party ===");
 
 const int PIZZASLICES = 8;
 
@@ -50,6 +56,8 @@ Console.WriteLine("Pizza Cost: " + pizzaCost.ToString("C"));
 
 // This code calculates paycheck
 
+Console.WriteLine("=== Part 3: Paycheck ===");
+
 const double TAXRATE = .18;
 
 Console.Write("Hours worked this week: ");
@@ -66,4 +74,17 @@ Console.WriteLine("Gross pay: " + grossPay.ToString("C"));
 Console. WriteLine("Tax withheld: " + taxWithheld.ToString("C"));
 Console. WriteLine("Take Home Pay: " + takeHomePay.ToString("C"));
 
+// This code calculates the trip summary
+
+Console.WriteLine("=== Part 4: The Whole Trip ===");
+
+double tripTotal = fuelCost + pizzaCost;
+double costPerPerson = tripTotal / peopleComingToParty;
+double takeHomePayPerHour = takeHomePay / hoursWorked;
+double hoursNeeded = costPerPerson / takeHomePayPerHour;
+
+Console.WriteLine("Trip Total: " + tripTotal.ToString("C"));
+Console.WriteLine("Cost per Person : " + costPerPerson.ToString("C"));
+Console.WriteLine("Take Home Pay Per Hour: " + takeHomePayPerHour.ToString("C"));
+Console.WriteLine("Hours you must work to cover your share: " + hoursNeeded.ToString("C"));
 
