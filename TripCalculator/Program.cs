@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlTypes;
+using System.Numerics;
 
 /*
 * Name: Felix Jordan
@@ -25,3 +26,26 @@ double fuelCost = gallonsNeeded * pricePerGallon;
 
 Console.WriteLine("Gallons needed:" + gallonsNeeded.ToString("F2"));
 Console.WriteLine("Fuel cost:" + fuelCost.ToString("C")); 
+
+// This code calculates needs for the pizza party
+
+const int PIZZASLICES = 8;
+
+Console.Write("How many people are coming to the party? ");
+double peopleComingToParty = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("How many pizzas are being ordered? " );
+double amountOfPizza = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("What is the price of each pizza? " );
+double pricePerPizza = Convert.ToDouble(Console.ReadLine());
+
+double totalSlices = PIZZASLICES * amountOfPizza;
+double slicesPerPerson = totalSlices / peopleComingToParty;
+double pizzaCost = amountOfPizza * pricePerPizza;
+
+Console.WriteLine("Total Slices: " + totalSlices);
+Console.WriteLine("Slices per Person: " + slicesPerPerson);
+Console.WriteLine("Pizza Cost: " + pizzaCost.ToString("C"));
+
+
