@@ -48,4 +48,22 @@ Console.WriteLine("Total Slices: " + totalSlices);
 Console.WriteLine("Slices per Person: " + slicesPerPerson);
 Console.WriteLine("Pizza Cost: " + pizzaCost.ToString("C"));
 
+// This code calculates paycheck
+
+const double TAXRATE = .18;
+
+Console.Write("Hours worked this week: ");
+double hoursWorked = Convert.ToDouble(Console.ReadLine());
+
+Console.Write("Hourly pay rate: ");
+double payRate = Convert.ToDouble(Console.ReadLine());
+
+double grossPay = hoursWorked * payRate;
+double taxWithheld = grossPay * TAXRATE;
+double takeHomePay = grossPay - taxWithheld;
+
+Console.WriteLine("Gross pay: " + grossPay.ToString("C"));
+Console. WriteLine("Tax withheld: " + taxWithheld.ToString("C"));
+Console. WriteLine("Take Home Pay: " + takeHomePay.ToString("C"));
+
 
