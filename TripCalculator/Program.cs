@@ -35,6 +35,7 @@ double pricePerPizza = Convert.ToDouble(Console.ReadLine());
 
 Console.Write("  ");
 
+
 double pizzaCost = amountOfPizza * pricePerPizza;
 double tripTotal = fuelCost(roadTripLength, milesPerGallon, pricePerGallon) + pizzaCost;
 
@@ -45,12 +46,24 @@ Console.WriteLine("Pizza Cost: "+ pizzaCost);
 Console.WriteLine("Trip Total: "+ (fuelCost(roadTripLength, milesPerGallon, pricePerGallon) + pizzaCost));
 
 
+Console.Write("  ");
+
+
+Console.WriteLine("=== Part 2: The Group ===");
+
+
+string[] names = {"Ada", "Grace", "Alan", "Katherine"};
+double[] hoursWorked = {22, 15, 30, 18 };
+double[] hourlyRates = {13.50, 16.00, 11.20 , 14.80};
+double costPerPerson = tripTotal / names.Length;
+
+Console.WriteLine("People going: " + names.Length);
+Console.WriteLine("Slices each: " + (amountOfPizza * PIZZASLICES) / names.Length);
+Console.WriteLine("Cost per person: " + costPerPerson);
+
 
 // //Console.WriteLine("Gallons needed: " + gallonsNeeded.ToString("F2"));
 // //Console.WriteLine("Fuel cost: " + fuelCost.ToString("C")); 
-
-
-
 
 // // This code calculates needs for the pizza party
 
@@ -111,9 +124,8 @@ static double takeHomePay(double hours, double hourlyRate, double TAXRATE)
 }
 
 
-// // this method calculates hours needed 
-// static double hoursToCover(double amountOwed, double takeHomePayPerHour)
-// {
-//     double takeHomePayPerHour = takeHomePay / hoursWorked;
-//     double hoursNeeded = costPerPerson / takeHomePayPerHour;
-// }
+// this method calculates hours needed 
+static double hoursToCover(double amountOwed, double takeHomePayPerHour)
+{
+   return amountOwed / takeHomePayPerHour;
+}
