@@ -10,10 +10,10 @@ using System.Numerics;
 */
 
 
+//following code recieves inputs and calculates the cost of the trip
 
 const double TAXRATE = .18;
 const int PIZZASLICES = 8;
-
 
 
 Console.Write("Input Road Trip length in miles ");
@@ -49,6 +49,8 @@ Console.WriteLine("Trip Total: "+ (fuelCost(roadTripLength, milesPerGallon, pric
 Console.Write("  ");
 
 
+// following code seperates each persons wage/hours worked into arrays
+
 Console.WriteLine("=== Part 2: The Group ===");
 
 
@@ -60,6 +62,52 @@ double costPerPerson = tripTotal / names.Length;
 Console.WriteLine("People going: " + names.Length);
 Console.WriteLine("Slices each: " + (amountOfPizza * PIZZASLICES) / names.Length);
 Console.WriteLine("Cost per person: " + costPerPerson);
+
+
+// following code uses a loop over an array to calculate how much each person works/makes. theoretically!
+
+Console.WriteLine("=== Part 3: Who Works How Long ===");
+
+
+for (int i = 0; i < names.Length; i++)
+{
+    double[] takeHomePays = {(hoursWorked[i] * hourlyRates[i]) - (hoursWorked[i] * hourlyRates[i] * TAXRATE)};
+
+   Console.WriteLine(names[i] + " takes home " +  takeHomePays[i] + " for " + hoursWorked[i] + " hours " );
+
+}
+ 
+
+
+// this method calculates fuel cost
+static double fuelCost(double roadTripLength, double milesPerGallon, double pricePerGallon)
+{
+    
+    double gallonsNeeded = roadTripLength / milesPerGallon; 
+    return gallonsNeeded * pricePerGallon;
+}
+
+
+// this method calculates take home pay 
+static double takeHomePay(double hours, double hourlyRate, double TAXRATE)
+{
+
+    double grossPay = hours * hourlyRate;
+    double taxWithheld = grossPay * TAXRATE;
+    return grossPay - taxWithheld;
+}
+
+
+// this method calculates hours needed 
+static double hoursToCover(double amountOwed, double takeHomePayPerHour)
+{
+   return amountOwed / takeHomePayPerHour;
+}
+
+
+
+
+
 
 
 // //Console.WriteLine("Gallons needed: " + gallonsNeeded.ToString("F2"));
@@ -104,28 +152,3 @@ Console.WriteLine("Cost per person: " + costPerPerson);
 
 
 
-
-// this method calculates fuel cost
-static double fuelCost(double roadTripLength, double milesPerGallon, double pricePerGallon)
-{
-    
-    double gallonsNeeded = roadTripLength / milesPerGallon; 
-    return gallonsNeeded * pricePerGallon;
-}
-
-
-// this method calculates take home pay 
-static double takeHomePay(double hours, double hourlyRate, double TAXRATE)
-{
-
-    double grossPay = hours * hourlyRate;
-    double taxWithheld = grossPay * TAXRATE;
-    return grossPay - taxWithheld;
-}
-
-
-// this method calculates hours needed 
-static double hoursToCover(double amountOwed, double takeHomePayPerHour)
-{
-   return amountOwed / takeHomePayPerHour;
-}
