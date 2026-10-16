@@ -1,16 +1,17 @@
 ﻿using System.Data.SqlTypes;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 
-/*
-* Name: Felix Jordan
-*Course: CSCI 1250, Section 001
-*Assignment: Lab 04, The Group Trip
-*Date: Oct 7, 2026
-*Description: Rebuilds trip calculator with methods and arrays so it reports on a whole group instead of a single person
-*/
+// /*
+// * Name: Felix Jordan
+// *Course: CSCI 1250, Section 001
+// *Assignment: Lab 04, The Group Trip
+// *Date: Oct 7, 2026
+// *Description: Rebuilds trip calculator with methods and arrays so it reports on a whole group instead of a single person
+// */
 
 
-//following code recieves inputs and calculates the cost of the trip
+// //following code recieves inputs and calculates the cost of the trip
 
 const double TAXRATE = .18;
 const int PIZZASLICES = 8;
@@ -68,15 +69,19 @@ Console.WriteLine("Cost per person: " + costPerPerson);
 
 Console.WriteLine("=== Part 3: Who Works How Long ===");
 
+double totalHours;
 
 for (int i = 0; i < names.Length; i++)
 {
-    double[] takeHomePays = {(hoursWorked[i] * hourlyRates[i]) - (hoursWorked[i] * hourlyRates[i] * TAXRATE)};
+Console.WriteLine($"{names[i]}: takes home {takeHomePay(hoursWorked[i], hourlyRates[i], TAXRATE)} for {hoursWorked[i]} hours, {(takeHomePay(hoursWorked[i], hourlyRates[i], TAXRATE)) / (hoursWorked[i])} per hour, must work {(costPerPerson / ((takeHomePay(hoursWorked[i], hourlyRates[i], TAXRATE)) / (hoursWorked[i])))} hours ");
+Console.WriteLine(" ");
 
-   Console.WriteLine(names[i] + " takes home " +  takeHomePays[i] + " for " + hoursWorked[i] + " hours " );
-
+//totalHours += hoursWorked[i] 
+//Console.WriteLine($"Total hours worked: {totalHours}");
 }
  
+
+
 
 
 // this method calculates fuel cost
@@ -89,19 +94,19 @@ static double fuelCost(double roadTripLength, double milesPerGallon, double pric
 
 
 // this method calculates take home pay 
-static double takeHomePay(double hours, double hourlyRate, double TAXRATE)
+static double takeHomePay(double hoursWorked, double hourlyRate, double TAXRATE)
 {
 
-    double grossPay = hours * hourlyRate;
+    double grossPay = hoursWorked * hourlyRate;
     double taxWithheld = grossPay * TAXRATE;
     return grossPay - taxWithheld;
 }
 
 
 // this method calculates hours needed 
-static double hoursToCover(double amountOwed, double takeHomePayPerHour)
+static double hoursToCover(double costPerPerson, double hourlyRates)
 {
-   return amountOwed / takeHomePayPerHour;
+   return costPerPerson / hourlyRates;
 }
 
 
